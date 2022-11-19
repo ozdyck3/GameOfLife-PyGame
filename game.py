@@ -8,8 +8,8 @@ WHITE = (255,255,255)
 WINDOW_HEIGHT = 800
 WINDOW_WIDTH = 800
 
-height = 50
-width = 50
+height = 100
+width = 100
 
 x = 0
 y = 0
@@ -60,9 +60,8 @@ random_board(game_board)
 print(game_board)
 
 while True:
-    print("loop")
+    time.sleep(0.1)
     SCREEN.fill((0,0,0))
-    time.sleep(0.5)
     x_board = 0
     y_board = 0
     original_board = game_board
@@ -75,14 +74,29 @@ while True:
             try:
                 if original_board[x_board+1][y_board] == 1:
                     neighbors +=1
+            except:
+                pass
+            try:
                 if original_board[x_board][y_board+1] == 1:
                     neighbors += 1
+            except:
+                pass
+            try:
                 if original_board[x_board+1][y_board+1] == 1:
                     neighbors += 1
+            except:
+                pass
+            try:
                 if original_board[x_board-1][y_board] == 1:
                     neighbors += 1
+            except:
+                pass
+            try:
                 if original_board[x_board+1][y_board-1] == 1:
                     neighbors += 1
+            except:
+                pass
+            try:
                 if original_board[x_board-1][y_board-1] == 1:
                     neighbors += 1
             except:
@@ -90,13 +104,10 @@ while True:
             if n == 1:
                 if neighbors >= 4:
                     game_board[x_board][y_board] = 0
-                    print("blanking")
                 if neighbors <= 1:
                     game_board[x_board][y_board] = 0
-                    print("blanking")
             if neighbors == 3:
                 game_board[x_board][y_board] = 1
-                print("life")
             x_board +=1
         y_board += 1
     draw_grid(x,y,game_board)
